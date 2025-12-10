@@ -57,32 +57,6 @@ export const constantRoutes = [
     component: () => import('@/views/error/401'),
     hidden: true
   },
-  // {
-  //   path: '',
-  //   component: Layout,
-  //   redirect: '/index',
-  //   children: [
-  //     {
-  //       path: '/index',
-  //       component: () => import('@/views/index'),
-  //       name: 'Index',
-  //       meta: { title: '上传应用', icon: 'upload', affix: true }
-  //     }
-  //   ]
-  // },
-  {
-    path: '',
-    component: Layout,
-    redirect: '/index',
-    children: [
-      {
-        path: '/index',
-        component: () => import('@/views/app/list/index'),
-        name: 'List',
-        meta: { title: '应用列表', icon: 'list', affix: true }
-      }
-    ]
-  },
   {
     path: '',
     component: Layout,
@@ -92,7 +66,20 @@ export const constantRoutes = [
         path: '/upload',
         component: () => import('@/views/app/upload/index'),
         name: 'Index',
-        meta: { title: '上传应用', icon: 'upload', affix: true }
+        meta: { title: '上传应用', icon: 'upload', affix: true, hideInMenu: false, }
+      }
+    ]
+  },
+  {
+    path: '',
+    component: Layout,
+    redirect: '/index',
+    children: [
+      {
+        path: '/index',
+        component: () => import('@/views/app/list/index'),
+        name: 'List',
+        meta: { title: '应用列表', icon: 'list', affix: true, hideInMenu: false, }
       }
     ]
   },

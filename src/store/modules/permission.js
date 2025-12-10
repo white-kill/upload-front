@@ -18,6 +18,9 @@ const usePermissionStore = defineStore(
       sidebarRouters: []
     }),
     actions: {
+      initSidebarRouters() {
+        this.sidebarRouters = constantRoutes;
+      },
       setRoutes(routes) {
         this.addRoutes = routes
         this.routes = constantRoutes.concat(routes)

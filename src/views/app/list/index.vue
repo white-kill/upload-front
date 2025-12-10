@@ -39,14 +39,23 @@
 <script setup>
 import { nextTick } from 'vue';
 import qrcode from 'qrcode';
+import { ElLoading } from 'element-plus';
+import { appList } from "@/api/upload";
 
 const canvasRef = ref();
-const currentPage = ref(1);
-const total = ref(1);
+const queryParams = ref({
+  pageNum: 1,
+  pageSize: 10,
+});
+const total = ref(0);
 const tableData = ref([
   { name: "招商银行", size: "245MB", number: 1000, url: "www.baidu.com" },
   { name: "招商银行", size: "245MB", number: 1000, url: "www.baidu.com" },
 ]);
+
+onMounted(() => {
+    getAppList();
+})
 
 const handleSizeChange = (val) => {
   console.log(`每页 ${val} 条`);
@@ -62,6 +71,20 @@ const popoverShow = () => {
     qrcode.toCanvas(canvasRef.value, url, { margin: 1, width: 175 });
   })
 }
+
+const getAppList = async () => {
+  const loading = ElLoading.service({
+    lock: true, 
+    text: 'Loading',
+    spinner: 'el-icon-loading',
+    background: 'rgba(0, 0, 0, 0.7)',
+  });
+  const res = await appList(queryParams.value);
+  console.log(res, 'res');
+  // tableData.value = res.data;
+  loading.close();
+}
+
 </script>
 
 <style scoped>

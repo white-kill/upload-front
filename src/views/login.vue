@@ -131,9 +131,9 @@ function handleLogin() {
       }).catch(() => {
         loading.value = false
         // 重新获取验证码
-        if (captchaEnabled.value) {
-          getCode()
-        }
+        // if (captchaEnabled.value) {
+        //   getCode()
+        // }
       })
     }
   })
@@ -160,7 +160,7 @@ function getCookie() {
   }
 }
 
-getCode()
+// getCode()
 getCookie()
 </script>
 
